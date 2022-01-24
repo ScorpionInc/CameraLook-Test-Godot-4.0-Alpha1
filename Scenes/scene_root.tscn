@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cidvd1vfai2sj"]
+
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="1_kgw2b"]
+
+[sub_resource type="OpenSimplexNoise" id="OpenSimplexNoise_0xoyd"]
+octaves = 5
+period = 67.7
+persistence = 0.516
+lacunarity = 1.72
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_rjx0l"]
+as_normal_map = true
+bump_strength = 12.3
+noise = SubResource( "OpenSimplexNoise_0xoyd" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7npe"]
+albedo_color = Color(1, 0.560784, 0.333333, 1)
+normal_enabled = true
+normal_texture = SubResource( "NoiseTexture_rjx0l" )
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gt5hk"]
+
+[node name="SceneRoot" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.912863, 0.408267, 0, -0.408267, 0.912863, 0, 0, 0)
+script = ExtResource( "1_kgw2b" )
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -5, 0)
+material_override = SubResource( "StandardMaterial3D_u7npe" )
+mesh = SubResource( "PlaneMesh_gt5hk" )
