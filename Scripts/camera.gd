@@ -49,5 +49,7 @@ func _process(delta):
 	#Original Code:
 	#velocity += MOVE_SPEED * delta * transform.basis.xform(motion)
 	velocity += MOVE_SPEED * delta * Basis_xform(transform.basis, motion)
-	velocity *= 0.85
-	self.transform = self.transform.translated(velocity)#translation += velocity
+	velocity *= 0.85# Adds drag to slow down when no keys are pressed.
+	#Original Code:
+	#translation += velocity
+	self.transform = self.transform.translated(velocity)
