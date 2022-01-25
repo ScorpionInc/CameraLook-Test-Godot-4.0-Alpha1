@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cidvd1vfai2sj"]
+[gd_scene load_steps=8 format=3 uid="uid://cidvd1vfai2sj"]
 
-[ext_resource type="Script" path="res://Scripts/camera.gd" id="1_kgw2b"]
+[ext_resource type="Script" path="res://Scripts/Camera2.gd" id="1_refmf"]
 
 [sub_resource type="OpenSimplexNoise" id="OpenSimplexNoise_0xoyd"]
 octaves = 5
@@ -20,13 +20,25 @@ normal_texture = SubResource( "NoiseTexture_rjx0l" )
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gt5hk"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_qb80g"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_thlrb"]
+
 [node name="SceneRoot" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.912863, 0.408267, 0, -0.408267, 0.912863, 0, 0, 0)
-script = ExtResource( "1_kgw2b" )
+script = ExtResource( "1_refmf" )
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -5, 0)
 material_override = SubResource( "StandardMaterial3D_u7npe" )
 mesh = SubResource( "PlaneMesh_gt5hk" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08612, -3.98267, -5.00858)
+mesh = SubResource( "BoxMesh_qb80g" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72802, -3.81985, 2.96355)
+mesh = SubResource( "CylinderMesh_thlrb" )
